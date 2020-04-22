@@ -67,7 +67,10 @@ export default {
     getNote() {
       if (this.$route.query.id !== undefined) {
         axios
-          .get("http://ingroup.com/api/notes/get?id=" + this.$route.query.id)
+          .get(
+            "http://ingroup.com/api/notes/get?filter[id][field]=id&filter[id][exp]==&filter[id][value]=" +
+              this.$route.query.id
+          )
           .then(({ data }) => {
             this.id = data.notes[0].id;
             this.title = data.notes[0].title;
